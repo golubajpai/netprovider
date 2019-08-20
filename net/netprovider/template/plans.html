@@ -1,0 +1,61 @@
+
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<h1>View Plans</h1>
+
+<table id="myTable" style="{width: 600px; margin-top: 300px;}" class="display">
+    <thead>
+    <tr>
+    <th>Plan Name</th>
+    <th>Speed Limit</th>
+    <th>Duration</th>
+    <th>Prise</th>
+    <th>Delete</th>  
+    <th>Edit</th>    
+    </tr>
+    </thead>
+    
+    <tbody>
+         {% for x in object %}
+        
+  <tr class="tablecenter">
+   
+    <td style="{text-align: center;}">{{x.plan_name}}</td>
+    <td style="{text-align: center;}">{{x.speed_limit}}</td>
+    <td style="{text-align: center;}">{{x.duration}}</td>
+    <td style="{text-align: center;}">{{x.prise}}</td>
+    <td><a class='a1' href="{% url 'plandelete' x.id %}">Delete </a></td>
+    <td><a class='a1' href="{% url 'planupdate' x.id %}">Update </a></td>
+    
+  </tr>
+  {% endfor %}
+</tbody>
+</table>
+
+
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'my.css' %}">
+
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> 
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script> 
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+
+
+
+<script type="text/javascript"> 
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>
+
+{% endblock %}
+

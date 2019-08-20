@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+<h1>** Add Plans **</h1>
+
+<div class='centerform'>
+<form method="post" class="newform" >
+	{% csrf_token %}
+    {{form}}
+    <br>
+	<button type='submit' class='button3'>Submit</button>
+
+</form>
+
+ <link rel="stylesheet" type="text/css" href="{% static 'my.css' %}">
+
+<style type="text/css">
+	.form12{
+		left: 20%;
+		width:100px;
+		height: 200px;
+
+	}
+.span{
+	background-color: 'lightgreen'
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+	
+	$('.btn-primary').click(function(){
+		var frm=$('#form23');
+		$.ajax({
+		type:'POST',
+		url:"{% url 'planadd' %}",
+		data:frm.serialize(),
+		success: name,
+	});
+		return false;
+	
+
+	});
+});
+function name(data){
+	$(.div1).html(data)
+}
+</script>
+
+{% endblock %}

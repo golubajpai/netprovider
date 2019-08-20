@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+
+<h1>** Add Custmor **</h1>
+
+<div class='centerform'>
+<form method="post" class="newform" >
+	{% csrf_token %}
+	{{form.name.label}}
+    {{form.name}}
+    {{form.contact.label}}
+    {{form.contact}}
+    {{form.email.label}}
+    {{form.email}}
+    {{form.age.label}}
+    {{form.age}}
+    {{form.gander.label}}
+    {{form.gander}}
+    {{form.region.label}}
+    {{form.region}}
+    {{form.plan.label}}
+    {{form.plan}}
+    {{form.business.label}}
+    {{form.business}}
+   
+    <br>
+    <br>
+	<button type='submit' class='button4'>Submit</button>
+
+</form>
+
+ <link rel="stylesheet" type="text/css" href="{% static 'my.css' %}">
+
+<style type="text/css">
+	.form12{
+		left: 20%;
+		width:100px;
+		height: 200px;
+
+	}
+.span{
+	background-color: 'lightgreen'
+}
+</style>
+
+{% endblock %}

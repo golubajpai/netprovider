@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+
+<h1>** Add Complain **</h1>
+
+<div class='centerform'>
+<form method="post" class="newform" >
+	{% csrf_token %}
+	{{form}}
+   
+    <br>
+    <br>
+	<button type='submit' class='button3'>Submit</button>
+
+</form>
+
+ <link rel="stylesheet" type="text/css" href="{% static 'my.css' %}">
+
+<style type="text/css">
+	.form12{
+		left: 20%;
+		width:100px;
+		height: 200px;
+
+	}
+.span{
+	background-color: 'lightgreen'
+}
+</style>
+
+{% endblock %}

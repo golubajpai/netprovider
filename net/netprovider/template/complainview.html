@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<h1>View Complain</h1>
+
+<table id="myTable" style="{width: 600px; margin-top: 300px;}" class="display">
+    <thead>
+    <tr>
+    <th>Custmor Name</th>
+    <th>Complain</th>
+    <th>Status</th>
+    <th>Date</th>
+    <th>Delete</th>
+    <th>Update</th>    
+    </tr>
+    </thead>
+    
+    <tbody>
+         {% for x in object %}
+        
+  <tr class="tablecenter">
+   
+    <td style="{text-align: center;}">{{x.custmor}}</td>
+    <td style="{text-align: center;}">{{x.description}}</td>
+    <td style="{text-align: center;}"><a class='a1' href="{% url 'complainupdatestatus' x.id %}">{{x.status}}</td>
+    <td style="{text-align: center;}">{{x.date}}</td>
+    <td><a class='a1' href="{% url 'complaindelete' x.id %}">Delete </a></td>
+    <td><a class='a1' href="{% url 'complainupdate' x.id %}">Update </a></td>
+
+    
+  </tr>
+  {% endfor %}
+</tbody>
+</table>
+
+
+    <!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> 
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script> 
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'my.css' %}">
+
+
+
+
+
+
+<script type="text/javascript"> 
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>
+{% endblock %}

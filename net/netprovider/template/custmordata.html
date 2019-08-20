@@ -1,0 +1,66 @@
+
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<h1>** Custmor **</h1>
+
+<table id="myTable" style="{width: 600px; margin-top: 300px;}" class="display">
+    <thead>
+    <tr>
+    <th>Name</th>
+    <th>Contact</th>
+    <th>Email</th>
+    <th>Age</th>
+    <th>Region</th>
+    <th>Gander</th>
+    <th>Business</th>
+    <th>Plan</th>
+    <th>Delete</th>  
+    <th>Edit</th>    
+    </tr>
+    </thead>
+    <tbody>
+        {% for x in object %}
+  <tr class="tablecenter">
+    <td style="{text-align: center;}">{{x.name}}</td>
+    <td style="{text-align: center;}">{{x.contact}}</td>
+    <td style="{text-align: center;}">{{x.email}}</td>
+    <td style="{text-align: center;}">{{x.age}}</td>
+    <td style="{text-align: center;}">{{x.region}}</td>
+    <td style="{text-align: center;}">{{x.gander}}</td>
+    <td style="{text-align: center;}">{{x.business}}</td>
+    <td style="{text-align: center;}">{{x.plan}}</td>
+    <td><a class='a1' href="{% url 'plandelete' x.id %}">Delete </a></td>
+    <td><a class='a1' href="{% url 'planupdate' x.id %}">Update </a></td>
+    {% endfor %}
+
+  </tr>
+</tbody>
+</table>
+
+
+
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'my.css' %}">
+
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> 
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script> 
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+
+
+
+<script type="text/javascript"> 
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>
+
+{% endblock %}
